@@ -106,7 +106,6 @@ const CardAvailability: FC<CardAvailabilityProps> = ({ className }) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit = (data: SettingAvailability) => {
     setIsLoading(true);
-    console.log("ONSUBMIT", data);
     setAvailability(JSON.stringify(data));
 
     toast({

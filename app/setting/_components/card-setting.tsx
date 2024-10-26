@@ -49,10 +49,10 @@ export type SettingGeneral = z.infer<typeof FormSchema>;
 const FormSchema = z.object({
   duration: z.coerce.number().int().positive(),
   bookingLimit: z.coerce.number().int().positive(),
-  videoTour: z.boolean(),
+  videoTour: z.boolean().optional(),
 });
 
-const durations = [15, 30, 45, 60, 90];
+const durations = [15, 30, 45, 60];
 
 const CardSetting: FC<CardSettingProps> = ({ className }) => {
   const {
@@ -86,7 +86,7 @@ const CardSetting: FC<CardSettingProps> = ({ className }) => {
     if (bookingLimit !== form.getValues("bookingLimit"))
       setBookingLimit(form.getValues("bookingLimit"));
     if (videoTour !== form.getValues("videoTour"))
-      setVideoTour(form.getValues("videoTour"));
+      setVideoTour(form.getValues("videoTour") ?? false);
 
     toast({
       title: "Setting updated",
