@@ -77,7 +77,9 @@ const CardSetting: FC<CardSettingProps> = ({ className }) => {
 
   function onSubmit(data: SettingGeneral, event?: React.BaseSyntheticEvent) {
     event?.preventDefault();
-    setShowDialog(true);
+
+    if (duration !== form.getValues("duration")) setShowDialog(true);
+    else onSubmitConfirmed();
   }
 
   function onSubmitConfirmed() {
