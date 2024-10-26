@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "./globals.scss";
 import Header from "@/components/header";
 import { Toaster } from "@/components/ui/toaster";
 import { SettingProvider } from "@/components/setting-provider";
