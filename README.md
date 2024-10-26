@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# next-ll
 
-## Getting Started
+This template should help get you started developing with Vue 3 in Vite.
 
-First, run the development server:
+## Preview
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+![Preview](./docs/preview.png "Preview")
+
+## Demo
+
+Demo is available on vercel, [https://next-ll.vercel.app](https://next-ll.vercel.app)
+
+## Requirements
+
+### Node.js
+
+This project require specific version of node.js, refer to `.nvmrc` for the exact version.
+
+If you're using [nvm](https://github.com/nvm-sh/nvm), you can run `nvm use` to automatically use the required version.
+
+### Bun
+
+This project is using [bun](https://bun.sh) as its package manager.
+
+```sh
+# Install bun
+npm install -g bun
+
+# Verify installation, should return `1.1.33` or equivalent
+bun -v
+```
+
+Alternatively, you can use `npm`, `pnpm`, or `yarn` at your own risk.
+
+## Project Setup
+
+```sh
+bun install --frozen-lockfile
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Compile and Minify for Production
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```sh
+bun run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Preview production build locally
 
-## Learn More
+```sh
+bun run start
+```
 
-To learn more about Next.js, take a look at the following resources:
+### Lint with [ESLint](https://eslint.org/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```sh
+bun lint
+```
