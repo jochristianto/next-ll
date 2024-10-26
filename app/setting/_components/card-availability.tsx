@@ -22,6 +22,8 @@ import { Text } from "@/components/ui/text";
 
 type CardAvailabilityProps = { className?: string };
 
+export type SettingAvailability = z.infer<typeof FormSchema>;
+
 const FormSchema = z.object({
   weeklySlots: z.array(
     z.object({
@@ -70,7 +72,7 @@ const generateTimeSlots = (start: number, end: number, period: number = 30) => {
   return slots;
 };
 
-const defaultValues: z.infer<typeof FormSchema> = {
+const defaultValues: SettingAvailability = {
   weeklySlots: [
     { dayNo: "1", slots: undefined },
     { dayNo: "2", slots: undefined },
@@ -91,7 +93,7 @@ const CardAvailability: FC<CardAvailabilityProps> = ({ className }) => {
     JSON.stringify(defaultValues)
   );
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<SettingAvailability>({
     resolver: zodResolver(FormSchema),
     mode: "onChange",
     defaultValues,
@@ -102,7 +104,7 @@ const CardAvailability: FC<CardAvailabilityProps> = ({ className }) => {
   }, [duration]);
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onSubmit = (data: z.infer<typeof FormSchema>) => {
+  const onSubmit = (data: SettingAvailability) => {
     setIsLoading(true);
     console.log("ONSUBMIT", data);
     setAvailability(JSON.stringify(data));
@@ -137,7 +139,7 @@ const CardAvailability: FC<CardAvailabilityProps> = ({ className }) => {
   return (
     <Card className={clsx(className, "relative")} key={duration}>
       {!duration && (
-        <div className="absolute inset-0 bg-black/80 rounded-lg flex items-center justify-center">
+        <div className="absolute inset-0 bg-black/80 rounded-lg flex items-center justify-center z-10">
           <Text className="text-white select-none">
             Update setting on the left to enable this feature
           </Text>

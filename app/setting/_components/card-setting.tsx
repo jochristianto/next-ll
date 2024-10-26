@@ -44,6 +44,8 @@ import { Button } from "@/components/ui/button";
 
 type CardSettingProps = { className?: string };
 
+export type SettingGeneral = z.infer<typeof FormSchema>;
+
 const FormSchema = z.object({
   duration: z.coerce.number().int().positive(),
   bookingLimit: z.coerce.number().int().positive(),
@@ -62,7 +64,7 @@ const CardSetting: FC<CardSettingProps> = ({ className }) => {
     setVideoTour,
   } = useSettingContext();
 
-  const form = useForm<z.infer<typeof FormSchema>>({
+  const form = useForm<SettingGeneral>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       duration,
@@ -73,10 +75,7 @@ const CardSetting: FC<CardSettingProps> = ({ className }) => {
 
   const [showDialog, setShowDialog] = useState(false);
 
-  function onSubmit(
-    data: z.infer<typeof FormSchema>,
-    event?: React.BaseSyntheticEvent
-  ) {
+  function onSubmit(data: SettingGeneral, event?: React.BaseSyntheticEvent) {
     event?.preventDefault();
     setShowDialog(true);
   }
