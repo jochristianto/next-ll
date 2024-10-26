@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
 import { CarIcon } from "lucide-react";
+import { Button } from "./ui/button";
+import { GitHubLogoIcon } from "@radix-ui/react-icons";
 
 const Header = () => {
   return (
@@ -10,20 +14,25 @@ const Header = () => {
           <span className="sr-only">LL</span>
         </Link>
         <div className="ml-auto flex gap-2">
-          <Link
-            href="/"
-            className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-            prefetch={false}
+          <Button asChild variant="outline">
+            <Link href="/" prefetch={false}>
+              Home
+            </Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link href="/setting" prefetch={false}>
+              Setting
+            </Link>
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={() => {
+              window.open("https://github.com/jochristianto/next-ll");
+            }}
           >
-            Home
-          </Link>
-          <Link
-            href="/setting"
-            className="group inline-flex h-9 w-max items-center justify-center rounded-md bg-white px-4 py-2 text-sm font-medium transition-colors hover:bg-gray-100 hover:text-gray-900 focus:bg-gray-100 focus:text-gray-900 focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-gray-100/50 data-[state=open]:bg-gray-100/50 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus:bg-gray-800 dark:focus:text-gray-50 dark:data-[active]:bg-gray-800/50 dark:data-[state=open]:bg-gray-800/50"
-            prefetch={false}
-          >
-            Setting
-          </Link>
+            <GitHubLogoIcon className="size-4" />
+          </Button>
         </div>
       </header>
     </div>
